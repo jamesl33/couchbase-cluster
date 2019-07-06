@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+  node1:
+    image: couchbase:enterprise
+    networks:
+      static:
+        ipv4_address: 172.20.1.1
+    volumes:
+      - ~/.couchbase-cluster/node1:/opt/couchbase/var
+  node2:
+    image: couchbase:enterprise
+    networks:
+      static:
+        ipv4_address: 172.20.1.2
+    volumes:
+      - ~/.couchbase-cluster/node2:/opt/couchbase/var
+  node3:
+    image: couchbase:enterprise
+    networks:
+      static:
+        ipv4_address: 172.20.1.3
+    volumes:
+      - ~/.couchbase-cluster/node3:/opt/couchbase/var
+  node4:
+    image: couchbase:enterprise
+    networks:
+      static:
+        ipv4_address: 172.20.1.4
+    volumes:
+      - ~/.couchbase-cluster/node4:/opt/couchbase/var
+networks:
+  static:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
