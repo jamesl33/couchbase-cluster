@@ -1,35 +1,43 @@
 version: "3.1"
 services:
   node1:
-    image: couchbase:enterprise
+    image: couchbase:enterprise-7.1.3
     networks:
-      static:
+      static_ipv4:
         ipv4_address: 172.20.1.1
+      # static_ipv6:
+      #   ipv6_address: 2001:3200:3200::20
     volumes:
       - /tmp/couchbase-cluster-$CLUSTER_UUID/node1:/opt/couchbase/var
   node2:
-    image: couchbase:enterprise
+    image: couchbase:enterprise-7.1.3
     networks:
-      static:
+      static_ipv4:
         ipv4_address: 172.20.1.2
     volumes:
       - /tmp/couchbase-cluster-$CLUSTER_UUID/node2:/opt/couchbase/var
   node3:
-    image: couchbase:enterprise
+    image: couchbase:enterprise-7.1.3
     networks:
-      static:
+      static_ipv4:
         ipv4_address: 172.20.1.3
     volumes:
       - /tmp/couchbase-cluster-$CLUSTER_UUID/node3:/opt/couchbase/var
   node4:
-    image: couchbase:enterprise
+    image: couchbase:enterprise-7.1.3
     networks:
-      static:
+      static_ipv4:
         ipv4_address: 172.20.1.4
     volumes:
       - /tmp/couchbase-cluster-$CLUSTER_UUID/node4:/opt/couchbase/var
 networks:
-  static:
+  static_ipv4:
     ipam:
       config:
         - subnet: 172.20.0.0/16
+  # static_ipv6:
+  #   enable_ipv6: true
+  #   ipam:
+  #     config:
+  #       - subnet: 2001:3200:3200::/64
+  #         gateway: 2001:3200:3200::1
